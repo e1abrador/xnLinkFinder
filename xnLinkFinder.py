@@ -2872,16 +2872,6 @@ def processEachInput(input):
                 urlPassed = True
         else:
             stdFile = True
-
-        # If no scope filter was not passed and the input is a domain/URL (or file of domains/URLS), raise an error. This is now a mandatory field for this input (it wasn't in previous versions).
-        if args.scope_filter is None and not waymoreMode and (urlPassed or stdFile or stdinFile):
-            writerr(
-                colored(
-                    "You need to provide a Scope Filter with the -sf / --scope-filter argument. This was optional in previous versions but is now mandatory if input is a domain/URL (or file of domains/URLs) to prevent crawling sites that are not in scope, and also prevent misleading results. The value should be a valid file of domains, or a single domain. No schema should be included and wildacard is optional, e.g. example1.com, sub.example2.com, example3.*",
-                    "red",
-                )
-            )
-            sys.exit()
             
         # Set headers to use if going to be making requests
         if urlPassed or stdFile:
